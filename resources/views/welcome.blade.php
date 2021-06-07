@@ -21,7 +21,7 @@
         </style>
     </head>
     <body>
-        <div id="example"></div>
+        <div id="app"></div>
         <!-- React JS -->
         <script src="{{ asset('js/app.js') }}"></script>
     </body>
