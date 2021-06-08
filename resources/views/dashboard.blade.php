@@ -13,5 +13,8 @@
                 </div>
             </div>
         </div>
+        <div id="app"></div>
+        <!-- React JS -->
+        <script src="{{ asset('js/app.js') }}"></script>
     </div>
 </x-app-layout>
