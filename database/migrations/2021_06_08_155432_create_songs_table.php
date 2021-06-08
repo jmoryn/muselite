@@ -17,7 +17,7 @@ class CreateSongsTable extends Migration
             $table->id();
             $table->string('title');
             $table->integer('tempo');
-            $table->string('body');
+            $table->longText('body');
             $table->timestamps();
         });
     }

@@ -13,11 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', function () {
-    return view('auth/register');
+    return view('auth.register');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::resource('songs', 'App\Http\Controllers\SongsController');
 
 require __DIR__.'/auth.php';
