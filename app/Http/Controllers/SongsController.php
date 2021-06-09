@@ -13,7 +13,7 @@ class SongsController extends Controller
      */
     public function index()
     {
-        $songs = Song::all();
+        $songs = Song::orderBy('created_at','desc')->get();
         return view('songs')->with('songs', $songs);
     }
 
@@ -24,7 +24,7 @@ class SongsController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -35,7 +35,19 @@ class SongsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'tempo' => 'required',
+            'body' => 'required'
+        ]);
+        // Create Post
+        $song = new Song;
+        $song->title = $request->input('title');
+        $song->tempo = $request->input('tempo');
+        $song->body = $request->input('body');
+        $song->save();
+
+        return redirect('/songs');
     }
 
     /**
