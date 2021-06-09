@@ -45,6 +45,7 @@ class SongsController extends Controller
         $song->title = $request->input('title');
         $song->tempo = $request->input('tempo');
         $song->body = $request->input('body');
+        $song->user_id = auth()->user()->id;
         $song->save();
 
         return redirect('/songs');
