@@ -70,7 +70,8 @@ class SongsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $song = Song::find($id);
+        return view('edit')->with('song', $song);
     }
 
     /**
@@ -82,7 +83,19 @@ class SongsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'tempo' => 'required',
+            'body' => 'required'
+        ]);
+        // Create Post
+        $song = Song::find($id);
+        $song->title = $request->input('title');
+        $song->tempo = $request->input('tempo');
+        $song->body = $request->input('body');
+        $song->save();
+
+        return redirect('/songs');
     }
 
     /**
@@ -93,6 +106,8 @@ class SongsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $song = Song::find($id);
+        $song->delete();
+        return redirect('/songs');
     }
 }
