@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Song;
+use App\Models\User;
 
 class SongsController extends Controller
 {
@@ -13,8 +14,9 @@ class SongsController extends Controller
      */
     public function index()
     {
-        $songs = Song::orderBy('created_at','desc')->get();
-        return view('songs')->with('songs', $songs);
+        $user_id = auth()->user()->id;
+        $user = User::find($user_id);
+        return view('songs')->with('songs', $user->songs);
     }
 
     /**

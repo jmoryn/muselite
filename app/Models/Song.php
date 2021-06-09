@@ -10,9 +10,9 @@ class Song extends Model
 
     public $primaryKey = 'id';
 
+    protected $fillable = ['title', 'tempo', 'body'];
+
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
-
-    protected $fillable = ['title', 'tempo', 'body'];
 }
